@@ -4,6 +4,10 @@ Vos stats Mailjet, claires et lisibles en quelques secondes.
 
 InfoJet est une application web qui permet d'analyser facilement les statistiques d'envoi d'emails depuis Mailjet. L'application traite les fichiers CSV exportés depuis Mailjet et présente les données sous forme de graphiques et statistiques claires.
 
+## Démo
+
+Découvrez InfoJet en action : [https://infojet.vercel.app](https://infojet.vercel.app)
+
 ## Fonctionnalités
 
 - Import de fichiers CSV Mailjet
