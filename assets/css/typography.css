@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&display=swap');
+
+.font-boldonse {
+  font-family: 'Boldonse', sans-serif;
+}
+
+.site-title {
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+} 

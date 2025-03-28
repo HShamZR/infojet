@@ -7,7 +7,11 @@ export default defineNuxtConfig({
     // Désactivation temporaire du module i18n pour résoudre les problèmes de chargement
     // '@nuxtjs/i18n'
   ],
-  css: ['~/assets/css/main.css'],
+  css: [
+    '~/assets/css/main.css',
+    '~/assets/css/typography.css',
+    '~/assets/css/animations.css'
+  ],
   app: {
     head: {
       title: 'InfoJet - Analyseur de Newsletter',
