@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: true,
   devtools: { enabled: true },
   compatibilityDate: '2025-03-28',
   modules: [
@@ -25,6 +25,16 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/icons/favicon.svg' },
         { rel: 'alternate icon', href: '/favicon.ico' }
+      ]
+    },
+    baseURL: '/'
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: [
+        '/',
+        '/confidentialite'
       ]
     }
   }
