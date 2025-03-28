@@ -1,17 +1,35 @@
 <template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+  <div class="max-w-7xl mx-auto p-0">
+    <!-- Composant pdfreport caché -->
+    <pdfreport
+      ref="pdfReportRef"
+      :stats="{
+        delivered: { count: stats.delivered, rate: Math.round((stats.delivered / stats.totalEmails) * 100) },
+        opened: { count: stats.opened, rate: Math.round((stats.opened / stats.totalEmails) * 100) },
+        clicked: { count: stats.clicked, rate: Math.round((stats.clicked / stats.totalEmails) * 100) },
+        spam: { count: stats.spam, rate: Math.round((stats.spam / stats.totalEmails) * 100) },
+        unsub: { count: stats.unsubscribed, rate: Math.round((stats.unsubscribed / stats.totalEmails) * 100) }
+      }"
+      :chartRef="chartRef"
+      :email="filters.email || 'Tous les expéditeurs'"
+      :dateRange="`${filters.startDate} → ${filters.endDate}`"
+      :periodStats="csvStore.periodStats"
+      :periodType="chartPeriod"
+      class="hidden"
+    />
     
     <!-- Section des statistiques -->
     <div v-if="showStats">
       <!-- Filtres et boutons -->
-      <div class="flex justify-between items-center mb-8">
+      <div class="flex flex-col lg:flex-row justify-between items-stretch lg:items-center gap-4 mb-8">
         <DateRangePicker
           v-model:startDate="filters.startDate"
           v-model:endDate="filters.endDate"
           @apply="applyFilters"
+          class="w-full lg:w-auto"
         />
 
-        <div class="flex items-center gap-4">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
           <EmailSelector
             v-model="filters.email"
             :emails="uniqueEmails"
@@ -19,14 +37,15 @@
           />
           <ActionButtons
             @download-image="downloadPNG"
-            @download-csv="downloadCSV"
+            @downloadCSV="downloadCSV"
+            @downloadPDF="downloadPDF"
             @reset="resetStats"
           />
         </div>
       </div>
 
       <!-- Zone d'export -->
-      <div id="export-zone" class="w-full bg-white p-8 rounded-lg shadow-xl">
+      <div id="export-zone" class="w-full bg-white dark:bg-navy-900 p-4 sm:p-8 rounded-lg border border-gray-200 dark:border-navy-700">
         <!-- Statistiques détaillées -->
         <StatsView :stats="stats" />
 
@@ -39,12 +58,18 @@
           :email="filters.email"
           ref="chartRef"
         />
+
+        <!-- Tableau de données brutes -->
+        <DataTable
+          :period-stats="csvStore.periodStats"
+          :period-type="chartPeriod"
+        />
       </div>
     </div>
 
     <!-- Message de bienvenue et zone de dépôt de fichier -->
     <div v-if="!showStats" class="min-h-[calc(100vh-20rem)] flex flex-col items-center justify-center p-0">
-      <div class="w-[600px]">
+      <div class="w-full">
         <FileUpload @file-processed="onFileProcessed" />
       </div>
       <WelcomeMessage />
@@ -56,6 +81,8 @@
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
 import { useCsvStore } from '~/stores/csvStore';
 import { useHead } from '@unhead/vue';
+import pdfreport from '~/components/pdfreport.vue';
+import DataTable from '~/components/DataTable.vue';
 
 // Imports des modules JavaScript
 import { getDefaultFilters } from '~/assets/js/filter-utils';
@@ -67,6 +94,7 @@ import { getSeoConfig } from '~/assets/js/seo-config';
 const csvStore = useCsvStore();
 const showStats = ref(false);
 const chartRef = ref(null);
+const pdfReportRef = ref(null);
 
 // Données calculées et réactives
 const stats = computed(() => csvStore.stats);
@@ -116,6 +144,12 @@ async function downloadPNG() {
 function downloadCSV() {
   const filteredData = csvStore.getFilteredData();
   exportToCSV(filteredData);
+}
+
+async function downloadPDF() {
+  if (pdfReportRef.value) {
+    await pdfReportRef.value.generatePDF();
+  }
 }
 
 // Surveiller les changements de période du graphique

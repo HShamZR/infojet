@@ -2,11 +2,13 @@
 export default defineNuxtConfig({
   ssr: false,
   devtools: { enabled: true },
+  compatibilityDate: '2025-03-28',
   modules: [
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt'
-    // Désactivation temporaire du module i18n pour résoudre les problèmes de chargement
-    // '@nuxtjs/i18n'
+  ],
+  plugins: [
+    '~/plugins/dark-mode.client.ts'
   ],
   css: [
     '~/assets/css/main.css',
@@ -21,24 +23,9 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }
       ],
       link: [
-        // Favicon SVG moderne pour les navigateurs compatibles
-        { 
-          rel: 'icon', 
-          type: 'image/svg+xml', 
-          href: '/icons/favicon.svg' 
-        },
-        // Favicon ICO pour la compatibilité avec les navigateurs plus anciens
-        { 
-          rel: 'alternate icon', 
-          href: '/favicon.ico' 
-        }
+        { rel: 'icon', type: 'image/svg+xml', href: '/icons/favicon.svg' },
+        { rel: 'alternate icon', href: '/favicon.ico' }
       ]
-    }
-  },
-  debug: true,
-  vite: {
-    define: {
-      'process.env.DEBUG': 'true'
     }
   }
 })

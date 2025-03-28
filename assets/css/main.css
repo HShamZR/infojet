@@ -1,7 +1,6 @@
 /* Styles pour la zone d'export */
 #export-zone {
   font-family: 'Inter', sans-serif;
-  background-color: white;
   padding: 2rem;
   width: 100%;
   max-width: none;
@@ -14,7 +13,6 @@
 }
 
 #export-zone .bg-white {
-  background-color: white !important;
   border: none !important;
   box-shadow: none !important;
 }
@@ -38,7 +36,6 @@ canvas {
 #export-zone .grid > div {
   border: none !important;
   box-shadow: none !important;
-  background-color: white !important;
 }
 
 /* Supprimer les bordures du graphique */
