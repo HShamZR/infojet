@@ -6,7 +6,7 @@ InfoJet est une application web qui permet d'analyser facilement les statistique
 
 ## Démo
 
-Découvrez InfoJet en action : [https://infojet.vercel.app](https://infojet.vercel.app)
+Découvrez InfoJet en action : [https://infojet.vercel.app](https://infojet.hichamzian.be)
 
 ## Fonctionnalités
 
