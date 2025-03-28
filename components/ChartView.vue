@@ -33,8 +33,8 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref, computed, watch, defineProps, defineEmits } from 'vue';
+<script setup>
+import { ref, computed, watch } from 'vue';
 import { Line } from 'vue-chartjs';
 import { registerChartComponents, getLineChartOptions, createLineChartData } from '~/assets/js/chart-config';
 import { formatDateRange, formatDate } from '~/assets/js/date-utils';

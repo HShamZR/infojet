@@ -52,7 +52,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
 import { useCsvStore } from '~/stores/csvStore';
 import { useHead } from '@unhead/vue';

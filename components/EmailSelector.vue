@@ -38,15 +38,21 @@
   </Combobox>
 </template>
 
-<script setup lang="ts">
-import { ref, computed, watch, defineProps, defineEmits } from 'vue'
+<script setup>
+import { ref, computed, watch } from 'vue'
 import { Combobox, ComboboxInput, ComboboxButton, ComboboxOptions, ComboboxOption } from '@headlessui/vue'
 import { filterEmails } from '~/assets/js/filter-utils'
 
-const props = defineProps<{
-  modelValue: string;
-  emails: string[];
-}>();
+const props = defineProps({
+  modelValue: {
+    type: String,
+    default: ''
+  },
+  emails: {
+    type: Array,
+    default: () => []
+  }
+});
 
 const emit = defineEmits(['update:modelValue', 'change']);
 
@@ -63,7 +69,7 @@ watch(() => props.modelValue, (newVal) => {
 const filteredEmails = computed(() => filterEmails(props.emails, query.value));
 
 // Émettre les changements
-function emitChange(value: string) {
+function emitChange(value) {
   emit('update:modelValue', value);
   emit('change', value);
 }

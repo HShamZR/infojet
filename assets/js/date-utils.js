@@ -24,6 +24,23 @@ export function formatDateRange(startDateStr, endDateStr) {
 }
 
 /**
+ * Retourne les périodes rapides disponibles avec leurs libellés
+ * @returns {Object} - Périodes avec leurs libellés
+ */
+export function getQuickPeriods() {
+  return {
+    today: "Aujourd'hui",
+    yesterday: "Hier",
+    last7days: "7 derniers jours",
+    thisMonth: "Ce mois-ci",
+    lastMonth: "Mois dernier",
+    thisYear: "Cette année",
+    last12Months: "12 derniers mois",
+    custom: "Personnalisé"
+  }
+}
+
+/**
  * Définit une période rapide (aujourd'hui, semaine dernière, etc.)
  * @param {string} period - Identifiant de la période
  * @returns {Object} - Dates de début et de fin

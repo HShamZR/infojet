@@ -16,7 +16,7 @@
   </footer>
 </template>
 
-<script setup lang="ts">
+<script setup>
 // Calcule l'année en cours pour le copyright
 const currentYear = new Date().getFullYear();
 </script> 

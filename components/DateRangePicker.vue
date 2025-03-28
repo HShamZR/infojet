@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex-1 max-w-[500px] min-w-[300px] mr-4">
+  <div class="relative flex-1 max-w-[500px] min-w-[300px] mr-4" ref="datePickerRef">
     <button 
       @click="showDatePicker = !showDatePicker"
       class="w-full flex items-center justify-between px-4 py-2 border rounded-lg hover:border-violet-500 focus:outline-none focus:border-violet-500"
@@ -74,14 +74,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, defineProps, defineEmits } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { formatDateRange, getQuickPeriodDates, isActivePeriod as checkActivePeriod, getQuickPeriods } from '~/assets/js/date-utils';
 import { onClickOutside } from '@vueuse/core';
 
-const props = defineProps<{
-  startDate: string;
-  endDate: string;
-}>();
+const props = defineProps({
+  startDate: {
+    type: String,
+    default: ''
+  },
+  endDate: {
+    type: String,
+    default: ''
+  }
+});
 
 const emit = defineEmits(['update:startDate', 'update:endDate', 'apply']);
 
@@ -91,6 +97,7 @@ const dateRange = ref({
   startDate: props.startDate,
   endDate: props.endDate
 });
+const datePickerRef = ref(null);
 
 // Mettre à jour l'état local quand les props changent
 watch(() => props.startDate, (newVal) => {
@@ -108,7 +115,7 @@ const quickPeriods = getQuickPeriods();
 const formattedDateRange = computed(() => formatDateRange(dateRange.value.startDate, dateRange.value.endDate));
 
 // Fonctions
-function setQuickPeriod(period: string) {
+function setQuickPeriod(period) {
   const dates = getQuickPeriodDates(period);
   if (dates) {
     dateRange.value.startDate = dates.startDate;
@@ -116,7 +123,7 @@ function setQuickPeriod(period: string) {
   }
 }
 
-function isActivePeriod(period: string): boolean {
+function isActivePeriod(period) {
   return checkActivePeriod(period, dateRange.value.startDate, dateRange.value.endDate);
 }
 
@@ -133,7 +140,6 @@ function applyDateSelection() {
 }
 
 // Fermer le sélecteur de date en cliquant à l'extérieur
-const datePickerRef = ref(null);
 onClickOutside(datePickerRef, () => {
   showDatePicker.value = false;
 });

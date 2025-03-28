@@ -15,6 +15,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 // Ce composant est purement déclaratif, aucune logique n'est nécessaire
 </script> 
