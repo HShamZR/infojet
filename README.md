@@ -12,8 +12,12 @@ InfoJet est une application web qui permet d'analyser facilement les statistique
 - Filtrage par expéditeur
 - Export des données filtrées en CSV
 - Export des graphiques en PNG
+- Génération de rapports PDF détaillés
+- Sauvegarde locale des 3 derniers fichiers importés
+- Thème clair/sombre automatique
 - Interface moderne et réactive
 - Traitement 100% côté client (aucune donnée envoyée à un serveur)
+- Tableau de données brutes avec statistiques détaillées
 
 ## Technologies utilisées
 
@@ -22,6 +26,7 @@ InfoJet est une application web qui permet d'analyser facilement les statistique
 - Chart.js pour les graphiques
 - TailwindCSS pour le style
 - PapaParse pour l'analyse des fichiers CSV
+- jsPDF pour la génération de PDF
 
 ## Installation
 
@@ -33,7 +38,7 @@ npm install
 npm run dev
 
 # Construire pour la production
-npm run build
+npm run generate
 ```
 
 ## Utilisation
@@ -41,7 +46,12 @@ npm run build
 1. Cliquez sur la zone d'import pour sélectionner un fichier CSV exporté depuis Mailjet
 2. Les statistiques s'affichent automatiquement
 3. Utilisez les filtres pour affiner les données par période ou expéditeur
-4. Téléchargez les données filtrées au format CSV ou une image PNG des graphiques
+4. Accédez aux options d'export via le menu déroulant :
+   - Téléchargement des données filtrées en CSV
+   - Export des graphiques en PNG
+   - Génération d'un rapport PDF complet
+5. Retrouvez vos 3 derniers fichiers importés sous la zone d'import
+6. Basculez entre le thème clair et sombre via le bouton dans l'en-tête
 
 ## Structure du projet
 
@@ -50,3 +60,25 @@ npm run build
 - `pages/` - Pages de l'application
 - `stores/` - Stores Pinia pour la gestion d'état
 - `public/` - Fichiers statiques
+- `plugins/` - Plugins Vue.js (ex: mode sombre)
+
+## Fonctionnalités détaillées
+
+### Rapports PDF
+- En-tête personnalisé avec logo
+- Statistiques détaillées avec visualisations
+- Graphique des tendances
+- Tableau de données brutes
+- Mise en page professionnelle
+
+### Sauvegarde locale
+- Stockage des 3 derniers fichiers importés
+- Rechargement rapide des données
+- Aucune donnée stockée sur le serveur
+- Effacement automatique au nettoyage du cache
+
+### Interface adaptative
+- Design responsive
+- Thème clair/sombre automatique
+- Animations fluides
+- Navigation intuitive
