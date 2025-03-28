@@ -1,0 +1,46 @@
+{
+  "app": {
+    "title": "InfoJet - Analyseur de statistiques Mailjet",
+    "description": "Analysez facilement vos statistiques Mailjet avec InfoJet. Visualisez les taux d'ouverture, clics et performances de vos campagnes email en quelques secondes."
+  },
+  "footer": {
+    "privacyPolicy": "Politique de confidentialité",
+    "copyright": "© {year} InfoJet",
+    "language": "Langue"
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "dataProcessing": {
+      "title": "Traitement des Données",
+      "intro": "InfoJet est un outil d'analyse qui traite vos données Mailjet de manière temporaire et locale :",
+      "points": {
+        "noStorage": "Aucune donnée n'est stockée sur nos serveurs",
+        "browserOnly": "Le traitement est effectué entièrement dans votre navigateur",
+        "autoDelete": "Les données sont effacées automatiquement à la fermeture de votre navigateur",
+        "noAccess": "Nous n'avons accès à aucune information de votre compte Mailjet"
+      }
+    },
+    "cookies": {
+      "title": "Cookies et Traceurs",
+      "intro": "InfoJet ne collecte aucune donnée personnelle et n'utilise aucun cookie de tracking :",
+      "points": {
+        "noAds": "Pas de cookies publicitaires",
+        "noAnalytics": "Pas de traceurs d'analyse",
+        "noStorage": "Pas de stockage local de données"
+      }
+    },
+    "security": {
+      "title": "Sécurité",
+      "intro": "La sécurité de vos données est notre priorité :",
+      "points": {
+        "localOnly": "Traitement local uniquement",
+        "noTransmission": "Aucune transmission de données vers des serveurs externes",
+        "csvSecurity": "Les fichiers CSV ne quittent jamais votre navigateur"
+      }
+    },
+    "contact": {
+      "title": "Contact",
+      "text": "Pour toute question concernant notre politique de confidentialité, vous pouvez nous contacter à l'adresse suivante : privacy@infojet.app"
+    }
+  }
+} 

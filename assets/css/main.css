@@ -1,0 +1,48 @@
+/* Styles pour la zone d'export */
+#export-zone {
+  font-family: 'Inter', sans-serif;
+  background-color: white;
+  padding: 2rem;
+  width: 100%;
+  max-width: none;
+}
+
+#export-zone * {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+#export-zone .bg-white {
+  background-color: white !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#export-zone select,
+#export-zone button {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#export-zone .grid {
+  gap: 2rem !important;
+}
+
+canvas {
+  image-rendering: pixelated;
+  border: none !important;
+}
+
+/* Supprimer les bordures des cartes de statistiques */
+#export-zone .grid > div {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: white !important;
+}
+
+/* Supprimer les bordures du graphique */
+#export-zone .h-\[400px\] {
+  border: none !important;
+  box-shadow: none !important;
+} 
