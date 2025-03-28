@@ -14,6 +14,19 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+      ],
+      link: [
+        // Favicon SVG moderne pour les navigateurs compatibles
+        { 
+          rel: 'icon', 
+          type: 'image/svg+xml', 
+          href: '/icons/favicon.svg' 
+        },
+        // Favicon ICO pour la compatibilité avec les navigateurs plus anciens
+        { 
+          rel: 'alternate icon', 
+          href: '/favicon.ico' 
+        }
       ]
     }
   },
