@@ -28,5 +28,11 @@ export default defineNuxtConfig({
       ]
     },
     baseURL: '/'
+  },
+  nitro: {
+    output: {
+      dir: 'dist',
+      publicDir: 'dist'
+    }
   }
 })
