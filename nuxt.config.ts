@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: true,
+  ssr: false,
   devtools: { enabled: true },
   compatibilityDate: '2025-03-28',
   modules: [
@@ -28,14 +28,5 @@ export default defineNuxtConfig({
       ]
     },
     baseURL: '/'
-  },
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: [
-        '/',
-        '/confidentialite'
-      ]
-    }
   }
 })
