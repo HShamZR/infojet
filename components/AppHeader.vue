@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="flex flex-col mb-12">
+    <div class="flex flex-col mb-0">
       <div class="flex items-center gap-2">
         <NuxtLink to="/" class="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-violet-500 logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
